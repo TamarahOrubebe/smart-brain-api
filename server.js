@@ -10,27 +10,23 @@ const register = require("./controllers/register");
 const signin = require("./controllers/signin");
 const profile = require("./controllers/profile");
 const image = require("./controllers/image");
-const auth = require("./controllers/authorization");
-
-
+const morgan = require('morgan');
 const db = knex({
 	// connect to your own database here:
 	client: "pg",
-
-	// To make things cleaner use the POSTGRES_URI connection string
-	connection: process.env.POSTGRES_URI,
+	// Use Connection URI for cleaner code
+	connection: process.env.POSTGRES_URI
 
 	// connection: {
-	// 	host: "localhost",
-	// 	user: "postgres",
-	//  	password: "tam",
-	//  	database: "smartbrain"
-	//  },
+	// 	host: process.env.POSTGRES_HOST,
+	// 	user: process.env.POSTGRES_USER,
+	// 	password: process.env.POSTGRES_PASSWORD,
+	// 	database: process.env.POSTGRES_DB,
+	// },
 });
 
 const app = express();
-
-app.use(morgan('combined'));
+app.use(morgan('combined'))
 app.use(cors());
 app.use(express.json());
 
