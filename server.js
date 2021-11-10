@@ -4,13 +4,14 @@ const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt-nodejs");
 const cors = require("cors");
 const knex = require("knex");
-const morgan = require('morgan');
+const morgan = require("morgan");
 
 const register = require("./controllers/register");
 const signin = require("./controllers/signin");
 const profile = require("./controllers/profile");
 const image = require("./controllers/image");
-const morgan = require('morgan');
+const auth = require("./controllers/authorization")
+
 const db = knex({
 	// connect to your own database here:
 	client: "pg",
